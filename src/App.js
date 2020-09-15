@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, ButtonGroup } from 'react-bootstrap';
-
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 function App() {
 
-  const [count, setCount] = useState(0);
+  const [text, setText] = useState('');
+  const [value, setValue] = useState('');
+  const handleClick = () => {
+    setValue(text)
+  }
 
   return (
     <div>
-      <ButtonGroup size="sm" className="mb-2">
-        <Button onClick={() => setCount(count + 1)}> いいね！</Button>
-        <Button onClick={() => setCount(count - 1)}>良くないね。</Button>
-        <Button onClick={() => setCount(0)}>reset</Button>
-      </ButtonGroup>
-      {count}
+      <InputGroup className="mb-3" >
+        <FormControl
+          aria-describedby="basic-addon2"
+          value={text}
+          onChange={e => setText(e.target.value)}
+        />
+        <InputGroup.Append>
+          <Button variant="outline-secondary" onClick={handleClick} >Button</Button>{value}
+        </InputGroup.Append>
+      </InputGroup>
     </div >
   )
 }
