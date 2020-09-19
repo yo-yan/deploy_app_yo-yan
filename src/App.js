@@ -6,9 +6,17 @@ function App() {
 
   const [text, setText] = useState('');
   const [value, setValue] = useState('');
+  const [error, setError] = useState('');
   const handleClick = () => {
-    setValue(text)
+    if (text === '') {
+      setError('なにか文字を入力してください。')
+    } else {
+      setValue(text)
+      setError('')
+    }
   }
+
+  console.log(text)
 
   return (
     <div>
@@ -22,6 +30,7 @@ function App() {
           <Button variant="outline-secondary" onClick={handleClick} >Button</Button>{value}
         </InputGroup.Append>
       </InputGroup>
+      {error}
     </div >
   )
 }
