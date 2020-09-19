@@ -1,37 +1,48 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 function App() {
+  const [jyanken, setJyanken] = useState();
+  const [cpujanken, setCpujanken] = useState();
 
-  const [text, setText] = useState('');
-  const [value, setValue] = useState('');
-  const [error, setError] = useState('');
-  const handleClick = () => {
-    if (text === '') {
-      setError('なにか文字を入力してください。')
-    } else {
-      setValue(text)
-      setError('')
-    }
+  const handlegu = () => {
+    setJyanken('グー')
+    cpuhande()
+  }
+  const handletyoki = () => {
+    setJyanken('チョキ')
+    cpuhande()
+  }
+  const handlepaa = () => {
+    setJyanken('パー')
+    cpuhande()
   }
 
-  console.log(text)
+  const cpuhande = () => {
+    const num = Math.floor(Math.random() * 3)
+    if (num === 0) {
+      setCpujanken('グー')
+    } else if (num === 1) {
+      setCpujanken('チョキ')
+    } else {
+      setCpujanken('パー')
+    }
+
+
+
+  }
 
   return (
     <div>
-      <InputGroup className="mb-3" >
-        <FormControl
-          aria-describedby="basic-addon2"
-          value={text}
-          onChange={e => setText(e.target.value)}
-        />
-        <InputGroup.Append>
-          <Button variant="outline-secondary" onClick={handleClick} >Button</Button>{value}
-        </InputGroup.Append>
-      </InputGroup>
-      {error}
-    </div >
+      <h1>ジャンケンをしましょう！！</h1>
+
+      <button onClick={handlegu}>グー</button>
+      <button onClick={handletyoki}>チョキ</button>
+      <button onClick={handlepaa}>パー</button>
+
+      <h2>あなたの手：{jyanken}</h2>
+      <h2>CPUの手：{cpujanken}</h2>
+
+    </div>
   )
 }
 
