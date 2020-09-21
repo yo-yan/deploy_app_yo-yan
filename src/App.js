@@ -1,58 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-function App() {
-  const [jyanken, setJyanken] = useState('');
-  const [cpujanken, setCpujanken] = useState('');
+const App = () => {
+
+  const [user, setUser] = useState('');
+  const [cpu, setCpu] = useState('');
   const [judge, setJudge] = useState('');
-  const [counter, setCounter] = useState(0);
   useEffect(() => {
     judgement()
+  })
 
-  }, [counter])
-  //プレイヤーの手
+  //プライヤーの手
   const handlegu = () => {
-    setJyanken('グー')
-    cpuhande()
+    setUser('グー')
+    cpuhand()
   }
   const handletyoki = () => {
-    setJyanken('チョキ')
-    cpuhande()
+    setUser('チョキ')
+    cpuhand()
   }
-  const handlepaa = () => {
-    setJyanken('パー')
-    cpuhande()
+  const handlepa = () => {
+    setUser('パー')
+    cpuhand()
   }
-
   //CPUの手
-  const cpuhande = () => {
+  const cpuhand = () => {
     const num = Math.floor(Math.random() * 3)
     if (num === 0) {
-      setCpujanken('グー')
+      setCpu('グー')
     } else if (num === 1) {
-      setCpujanken('チョキ')
+      setCpu('チョキ')
     } else {
-      setCpujanken('パー')
+      setCpu('パー')
     }
-    setCounter(prev => prev + 1)
   }
-
   //判定結果
   const judgement = () => {
-    if (jyanken !== '') {
-      if (jyanken === cpujanken) {
+    if (user !== '') {
+      if (user === cpu) {
         setJudge('あいこです')
-      } else if (jyanken === 'グー' && cpujanken === 'チョキ') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'グー' && cpujanken === 'パー') {
-        setJudge('あなたの負けです')
-      } else if (jyanken === 'チョキ' && cpujanken === 'パー') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'チョキ' && cpujanken === 'グー') {
-        setJudge('あなたの負けです')
-      } else if (jyanken === 'パー' && cpujanken === 'グー') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'パー' && cpujanken === 'チョキ') {
-        setJudge('あなたの負けです')
+      } else if (user === 'グー' && cpu === 'チョキ') {
+        setJudge('あなたの勝ちです！')
+      } else if (user === 'グー' && cpu === 'パー') {
+        setJudge('あなたの負けです。')
+      } else if (user === 'チョキ' && cpu === 'パー') {
+        setJudge('あなたの勝ちです！')
+      } else if (user === 'チョキ' && cpu === 'グー') {
+        setJudge('あなたの負けです。')
+      } else if (user === 'パー' && cpu === 'グー') {
+        setJudge('あなたの勝ちです！')
+      } else if (user === 'パー' && cpu === 'チョキ') {
+        setJudge('あなたの負けです。')
       }
     }
   }
@@ -60,17 +57,14 @@ function App() {
   return (
     <div>
       <h1>ジャンケンをしましょう！！</h1>
-
       <button onClick={handlegu}>グー</button>
       <button onClick={handletyoki}>チョキ</button>
-      <button onClick={handlepaa}>パー</button>
-
-      <h2>あなたの手：{jyanken}</h2>
-      <h2>CPUの手：{cpujanken}</h2>
-      <h2>判定：{judge}</h2>
-
+      <button onClick={handlepa}>パー</button>
+      <h2>あなたの手：{user}</h2>
+      <h2>CPUの手：{cpu}</h2>
+      <h2>勝敗結果：{judge}</h2>
     </div>
   )
 }
 
-export default App;
+export default App
