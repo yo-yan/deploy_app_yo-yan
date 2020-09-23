@@ -1,76 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-function App() {
-  const [jyanken, setJyanken] = useState('');
-  const [cpujanken, setCpujanken] = useState('');
+const App = () => {
+  const [user, setUser] = useState('');
+  const [rival, setRival] = useState('');
   const [judge, setJudge] = useState('');
-  const [counter, setCounter] = useState(0);
   useEffect(() => {
     judgement()
-
-  }, [counter])
-  //プレイヤーの手
-  const handlegu = () => {
-    setJyanken('グー')
-    cpuhande()
+  })
+  //プレイヤーのタイプ
+  const handlfire = () => {
+    setUser('火')
+    rivalhandl()
   }
-  const handletyoki = () => {
-    setJyanken('チョキ')
-    cpuhande()
+  const handlwater = () => {
+    setUser('水')
+    rivalhandl()
   }
-  const handlepaa = () => {
-    setJyanken('パー')
-    cpuhande()
+  const handlreef = () => {
+    setUser('草')
+    rivalhandl()
   }
-
-  //CPUの手
-  const cpuhande = () => {
+  //敵のタイプ
+  const rivalhandl = () => {
     const num = Math.floor(Math.random() * 3)
     if (num === 0) {
-      setCpujanken('グー')
+      setRival('火')
     } else if (num === 1) {
-      setCpujanken('チョキ')
+      setRival('水')
     } else {
-      setCpujanken('パー')
+      setRival('草')
     }
-    setCounter(prev => prev + 1)
   }
-
-  //判定結果
+  //勝敗結果
   const judgement = () => {
-    if (jyanken !== '') {
-      if (jyanken === cpujanken) {
-        setJudge('あいこです')
-      } else if (jyanken === 'グー' && cpujanken === 'チョキ') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'グー' && cpujanken === 'パー') {
-        setJudge('あなたの負けです')
-      } else if (jyanken === 'チョキ' && cpujanken === 'パー') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'チョキ' && cpujanken === 'グー') {
-        setJudge('あなたの負けです')
-      } else if (jyanken === 'パー' && cpujanken === 'グー') {
-        setJudge('あなたの勝ちです')
-      } else if (jyanken === 'パー' && cpujanken === 'チョキ') {
-        setJudge('あなたの負けです')
+    if (user !== '') {
+      if (user === rival) {
+        setJudge('通常ダメージ')
+      } else if (user === '火' && rival === '水') {
+        setJudge('効果はいまひとつ')
+      } else if (user === '火' && rival === '草') {
+        setJudge('効果は抜群')
+      } else if (user === '水' && rival === '草') {
+        setJudge('効果はいまひとつ')
+      } else if (user === '水' && rival === '火') {
+        setJudge('効果は抜群')
+      } else if (user === '草' && rival === '火') {
+        setJudge('効果はいまひとつ')
+      } else if (user === '草' && rival === '水') {
+        setJudge('効果は抜群')
       }
     }
   }
-
   return (
     <div>
-      <h1>ジャンケンをしましょう！！</h1>
+      <button onClick={handlfire}>火</button>
+      <button onClick={handlwater}>水</button>
+      <button onClick={handlreef}>草</button>
 
-      <button onClick={handlegu}>グー</button>
-      <button onClick={handletyoki}>チョキ</button>
-      <button onClick={handlepaa}>パー</button>
-
-      <h2>あなたの手：{jyanken}</h2>
-      <h2>CPUの手：{cpujanken}</h2>
-      <h2>判定：{judge}</h2>
-
+      <h2>あなたのタイプ：{user}</h2>
+      <h2>敵のタイプ：{rival}</h2>
+      <h2>勝敗結果：{judge}</h2>
     </div>
   )
 }
 
-export default App;
+export default App
