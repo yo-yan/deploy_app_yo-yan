@@ -1,21 +1,20 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import TopPage from './Component/TopPage';
-import SecoundPage from './Component/SecoundPage';
+import Login from './pages/Login';
+import CreateUser from './pages/CreateUser';
+import Main from './pages/Main';
 
-const App = () => {
-
+function App() {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route exact path='/' component={TopPage}></Route>
-          <Route exact path='/secoundpage' component={SecoundPage}></Route>
-        </Switch>
-      </Router>
-    </div >
-  )
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/createUser" component={CreateUser} />
+        <Route path="/main" component={Main} />
+      </Switch>
+    </Router>
+  );
 }
 
-export default App
+export default App;
