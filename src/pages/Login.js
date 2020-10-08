@@ -4,7 +4,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import firebase from '../config/firebase';
 
+
+
+
 const Login = () => {
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -26,9 +30,10 @@ const Login = () => {
                 } else if (errorCode === 'auth/user-disabled') {
                     alert('このユーザーは無効です。')
                 }
-                console.log(error)
             });
     }
+
+
 
     return (
         <div className='text' >
@@ -36,7 +41,7 @@ const Login = () => {
             <TextField id="email" label="email" value={email} onChange={e => setEmail(e.target.value)} /><br />
             <TextField id="password" label="password" value={password} onChange={e => setPassword(e.target.value)} /><br />
             <Button variant="outlined" onClick={clickButton}>Login</Button><br />
-            <Link to='/createUser' >アカウント作成</Link>
+            <Link to='/createUser'>アカウント作成</Link>
         </div>
     )
 }
