@@ -21,6 +21,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 
+<<<<<<< HEAD
 export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
     await db
         .collection('Programming Academy')
@@ -38,6 +39,25 @@ export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
         });
 }
 
+=======
+export const mycreateData = async (myfirst, mylast, myborn) => {
+    await db
+        // Add a new document with a generated id.
+        .collection('user')
+        .add({
+            first: myfirst,
+            last: mylast,
+            born: myborn,
+        })
+        .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
+    console.log(myfirst, mylast, myborn)
+};
+>>>>>>> 1d748cd31859ab42cd4289c7cd5ccceb9f7b9484
 
 //create
 export const createData = async () => {
@@ -95,7 +115,11 @@ export const updateData = async () => {
 export const deleteDate = async () => {
     await db
         .collection("user")
+<<<<<<< HEAD
         .doc("1st4VDBITXi4OQuwKRYm")
+=======
+        .doc("MeKAmMhu9RqaZ18WKabi")
+>>>>>>> 1d748cd31859ab42cd4289c7cd5ccceb9f7b9484
         .delete()
         .then(function () {
             console.log("Document successfully deleted!");

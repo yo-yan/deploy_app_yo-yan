@@ -10,10 +10,16 @@ const Main = () => {
     const [myfirst, setMyfirst] = useState('')
     const [mylast, setMylast] = useState('')
     const [myborn, setMyborn] = useState('')
+<<<<<<< HEAD
     const [mydata, setMydata] = useState('')
 
     const handleData = async () => {
         await mycreateData(myfirst, mylast, myborn, mydata);
+=======
+
+    const handleData = async () => {
+        await mycreateData(myfirst, mylast, myborn);
+>>>>>>> 1d748cd31859ab42cd4289c7cd5ccceb9f7b9484
     }
 
     const handleCreate = async () => {
@@ -36,12 +42,20 @@ const Main = () => {
     return (
         <div>
             <h1>Main</h1>
+<<<<<<< HEAD
             <TextField id="mydata" label="userid" value={mydata} onChange={e => setMydata(e.target.value)} />
             <TextField id="myfirst" label="Fist" value={myfirst} onChange={e => setMyfirst(e.target.value)} />
             <TextField id="mylast" label="Last" value={mylast} onChange={e => setMylast(e.target.value)} />
             <TextField id="myborn" label="Born" value={myborn} onChange={e => setMyborn(e.target.value)} />
             <br />
             <Button variant="outlined" onClick={handleData} >MY DATA CREATE</Button>
+=======
+            <TextField id="myfirst" label="Fist" value={myfirst} onChange={e => setMyfirst(e.target.value)} />
+            <TextField id="mylast" label="Last" value={mylast} onChange={e => setMylast(e.target.value)} />
+            <TextField id="myborn" label="Filled" value={myborn} onChange={e => setMyborn(e.target.value)} />
+            <br />
+            <Button variant="outlined" onClick={handleData}>MY DATA CREATE</Button>
+>>>>>>> 1d748cd31859ab42cd4289c7cd5ccceb9f7b9484
             <Button variant="outlined" onClick={handleCreate}>create</Button>
             <Button variant="outlined" onClick={handleread}>read</Button>
             <Button variant="outlined" onClick={handleUpdate}>update</Button>
