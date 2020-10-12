@@ -14,7 +14,6 @@ const Main = () => {
 
     const handleData = async () => {
         await mycreateData(myfirst, mylast, myborn, mydata);
-
     }
 
     const handleCreate = async () => {
@@ -32,7 +31,6 @@ const Main = () => {
     const handleDelete = async () => {
         await deleteDate();
     }
-
 
     return (
         <div>

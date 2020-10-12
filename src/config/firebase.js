@@ -2,9 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-
-
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
@@ -21,6 +18,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 
+
+//userCreatedata
 export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
     await db
         .collection('Programming Academy')
@@ -30,7 +29,7 @@ export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
             last: mylast,
             born: myborn
         })
-        .then(function () {
+        .then(function (docRef) {
             console.log("Document successfully written!");
         })
         .catch(function (error) {
@@ -54,7 +53,6 @@ export const createData = async () => {
         .catch(function (error) {
             console.error("Error adding document: ", error);
         });
-
 };
 
 //read
@@ -72,6 +70,7 @@ export const readData = async () => {
         });
 };
 
+//update
 export const updateData = async () => {
     const ref = await db
         .collection('user')
@@ -91,6 +90,7 @@ export const updateData = async () => {
         });
 }
 
+//delete
 export const deleteDate = async () => {
     await db
         .collection("user")

@@ -4,9 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import firebase from '../config/firebase';
 
-
-
-
 const Login = () => {
 
     const [email, setEmail] = useState('')
@@ -32,8 +29,6 @@ const Login = () => {
                 }
             });
     }
-
-
 
     return (
         <div className='text' >
