@@ -21,23 +21,23 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 
-export const mycreateData = async (myfirst, mylast, myborn) => {
+export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
     await db
-        // Add a new document with a generated id.
-        .collection('user')
-        .add({
+        .collection('Programming Academy')
+        .doc(mydata)
+        .set({
             first: myfirst,
             last: mylast,
-            born: myborn,
+            born: myborn
         })
-        .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
+        .then(function () {
+            console.log("Document successfully written!");
         })
         .catch(function (error) {
-            console.error("Error adding document: ", error);
+            console.error("Error writing document: ", error);
         });
-    console.log(myfirst, mylast, myborn)
-};
+}
+
 
 //create
 export const createData = async () => {
@@ -95,7 +95,7 @@ export const updateData = async () => {
 export const deleteDate = async () => {
     await db
         .collection("user")
-        .doc("MeKAmMhu9RqaZ18WKabi")
+        .doc("1st4VDBITXi4OQuwKRYm")
         .delete()
         .then(function () {
             console.log("Document successfully deleted!");
