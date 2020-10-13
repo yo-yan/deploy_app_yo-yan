@@ -18,6 +18,22 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 
+//指定データ取得
+export const specifiedData = async () => {
+    await db
+        .collection("user")
+        .where('born', "==", 1992)
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+}
 
 //userCreatedata
 export const mycreateData = async (myfirst, mylast, myborn, mydata) => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createData, readData, updateData, deleteDate } from '../config/firebase';
+import { createData, readData, updateData, deleteDate, specifiedData } from '../config/firebase';
 import { mycreateData } from '../config/firebase'
 import Button from '@material-ui/core/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,22 +12,27 @@ const Main = () => {
     const [myborn, setMyborn] = useState('')
     const [mydata, setMydata] = useState('')
 
+    //指定データ取得
+    const handleInformation = async () => {
+        await specifiedData();
+    }
+    //userCreatedata
     const handleData = async () => {
         await mycreateData(myfirst, mylast, myborn, mydata);
     }
-
+    //create
     const handleCreate = async () => {
         await createData();
     }
-
+    //read
     const handleread = async () => {
         await readData();
     }
-
+    //update
     const handleUpdate = async () => {
         await updateData();
     }
-
+    //delete
     const handleDelete = async () => {
         await deleteDate();
     }
@@ -45,6 +50,7 @@ const Main = () => {
             <Button variant="outlined" onClick={handleread}>read</Button>
             <Button variant="outlined" onClick={handleUpdate}>update</Button>
             <Button variant="outlined" onClick={handleDelete}>delete</Button>
+            <Button variant="outlined" onClick={handleInformation}>情報</Button>
         </div >
     )
 }
