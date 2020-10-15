@@ -27,7 +27,7 @@ export const specifiedData = async () => {
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                console.log(doc.id, " => ", doc.data())
             });
         })
         .catch(function (error) {
@@ -38,7 +38,7 @@ export const specifiedData = async () => {
 //userCreatedata
 export const mycreateData = async (myfirst, mylast, myborn, mydata) => {
     await db
-        .collection('Programming Academy')
+        .collection('user')
         .doc(mydata)
         .set({
             first: myfirst,
