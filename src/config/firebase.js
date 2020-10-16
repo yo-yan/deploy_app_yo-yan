@@ -14,6 +14,7 @@ var firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID,
     measurementId: process.env.REACT_APP_APP_ID
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
@@ -22,7 +23,7 @@ export const db = firebase.firestore();
 export const specifiedData = async () => {
     await db
         .collection("user")
-        .where('born', "==", 1992)
+        .where('born', "==", '1992')
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
@@ -73,7 +74,6 @@ export const createData = async () => {
 
 //read
 export const readData = async () => {
-
     await db
         .collection('user')
         .get()
@@ -90,7 +90,7 @@ export const readData = async () => {
 export const updateData = async () => {
     const ref = await db
         .collection('user')
-        .doc('s5IaKFKWSkJq3d9amyaK');
+        .doc('2gFp9w2I6RggoPD2sfsy');
     //Set the "capital" field of the city 'DC
     return ref
         .update({
